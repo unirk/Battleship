@@ -122,7 +122,13 @@ export default class Game extends React.Component {
                             that.setState({
                                 mySquares: mySquares,
                             });
-                            setTimeout(aiShooting, 500);
+                            if (checkWin(mySquares)) {
+                                that.setState({
+                                    gameState: GAME_STATE_LOSE,
+                                });
+                            } else {
+                                setTimeout(aiShooting, 500);
+                            }
                         } else {
                             that.setState({
                                 mySquares: mySquares,
